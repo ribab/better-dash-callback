@@ -1,4 +1,3 @@
-
 # better-dash-callback
 
 A library that enables running clientside callback functions in Dash applications using Python syntax, eliminating the need for inline JavaScript.
@@ -60,7 +59,10 @@ app.layout = html.Div([
 @callback(
     Output("output", "children"),
     Input("input", "value"),
-    clientside=True
+    clientside=True,
+    enable_es6=True,
+    enable_stage3=True,
+    prevent_initial_call=True
 )
 def update_output(value):
     return f"You entered: {value}"
@@ -70,6 +72,13 @@ if __name__ == "__main__":
 ```
 
 As you can see, the `better-dash-callback` example is more elegant and easier to read. You can write your callback function using Python syntax, without having to worry about inline JavaScript code.
+
+The `callback` function takes the following additional arguments:
+
+* `clientside`: A boolean indicating whether the callback should be executed on the client-side (default is `False`).
+* `enable_es6`: A boolean indicating whether to enable ES6 syntax in the generated JavaScript code (default is `True`).
+* `enable_stage3`: A boolean indicating whether to enable Stage 3 syntax in the generated JavaScript code (default is `True`).
+* `prevent_initial_call`: A boolean indicating whether to prevent the callback from being called on the initial render (default is `False`).
 
 ## Installation
 
