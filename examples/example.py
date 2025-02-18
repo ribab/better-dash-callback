@@ -12,7 +12,6 @@ app.layout = html.Div([
 @callback(
     Output("output", "children"),
     Input("input", "value"),
-    prevent_initial_call=True,
     clientside=True
 )
 def update_output(value):

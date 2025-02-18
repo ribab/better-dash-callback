@@ -25,60 +25,34 @@ Let's consider a simple example where we want to update the text of a component 
 **Using Dash's `clientside_callback`**
 
 ```python
-import dash
-from dash import html
-from dash.dependencies import Input, Output
+from dash import clientside_callback
 
-app = dash.Dash(__name__)
-
-app.layout = html.Div([
-    html.Input(id="input", type="text"),
-    html.Div(id="output")
-])
-
-app.clientside_callback(
+clientside_callback(
     """
     function(value) {
         return 'You entered: ' + value;
     }
     """,
     Output("output", "children"),
-    Input("input", "value"),
-    
+    Input("input", "value")
 )
-
-if __name__ == "__main__":
-    app.run_server(debug=True)
 ```
 
 **Using `better-dash-callback`**
 
 ```python
-import dash
-from dash import html
 from better_dash_callback import callback
-
-app = dash.Dash(__name__)
-
-app.layout = html.Div([
-    html.Input(id="input", type="text"),
-    html.Div(id="output")
-])
 
 @callback(
     Output("output", "children"),
     Input("input", "value"),
-    clientside=True,
-    prevent_initial_call=True
+    clientside=True
 )
 def update_output(value):
     return f"You entered: {value}"
-
-if __name__ == "__main__":
-    app.run_server(debug=True)
 ```
 
-As you can see, the `better-dash-callback` example is more elegant and easier to read. You can write your callback function using Python syntax, without having to worry about inline JavaScript code.
+As you can see, the `better-dash-callback` example is more elegant and easier to read. You can write your callback function using Python syntax, without having to worry about inline JavaScript code, and the code you write also includes all the python syntax highlighting rather than being javascript code inside of a python string.
 
 The `callback` function takes the following additional arguments:
 
