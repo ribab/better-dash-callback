@@ -3,7 +3,7 @@ import metapensiero.pj.__main__
 import dash
 import inspect
 
-def callback(*args, clientside=False, enable_es6=True, enable_stage3=True, **kwargs):
+def callback(*args, clientside=False, disable_es6=False, enable_stage3=False, **kwargs):
     """
     A decorator to register a Dash callback. If `clientside` is True, the python callback
     will be executed clientside using https://github.com/metapensiero/metapensiero.pj
@@ -26,7 +26,7 @@ def callback(*args, clientside=False, enable_es6=True, enable_stage3=True, **kwa
         if clientside:
             python_code = inspect.getsource(func)
             python_code = python_code[python_code.find("def "):]
-            js_code = metapensiero.pj.__main__.transform_string(python_code, enable_es6=enable_es6, enable_stage3=enable_stage3)
+            js_code = metapensiero.pj.__main__.transform_string(python_code, enable_es6=not disable_es6, enable_stage3=enable_stage3)
             dash.clientside_callback(js_code, *args, **kwargs)
         else:
             @dash.callback(*args, **kwargs)

@@ -5,7 +5,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name='better-dash-callback',
-    version='0.1.2',
+    version='0.1.3',
     description='Runs clientside callback functions in Dash applications using Python syntax, eliminating the need for inline JavaScript.',
     author='Richard Barella Jr.',
     author_email='codingwithricky@gmail.com',

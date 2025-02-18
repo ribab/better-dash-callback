@@ -10,6 +10,14 @@ When building Dash applications, you often need to write clientside callback fun
 
 `better-dash-callback` provides a solution to this problem by allowing you to write clientside callback functions using Python syntax. This makes your code more readable, maintainable, and efficient.
 
+## Dependencies
+
+`better-dash-callback` depends on `metapensiero.pj`, a Python-to-JavaScript compiler that allows you to write Python code that can be executed in a JavaScript environment.
+
+## Supported Python-to-JavaScript Syntax
+
+The supported Python-to-JavaScript syntax is listed in the [metapensiero.pj documentation](https://github.com/metapensiero/metapensiero.pj). This includes support for many Python features, such as functions, classes, loops, and conditional statements.
+
 ## Example
 
 Let's consider a simple example where we want to update the text of a component based on the value of an input component.
@@ -35,7 +43,8 @@ app.clientside_callback(
     }
     """,
     Output("output", "children"),
-    Input("input", "value")
+    Input("input", "value"),
+    
 )
 
 if __name__ == "__main__":
@@ -74,9 +83,9 @@ As you can see, the `better-dash-callback` example is more elegant and easier to
 The `callback` function takes the following additional arguments:
 
 * `clientside`: A boolean indicating whether the callback should be executed on the client-side (default is `False`).
-* `enable_es6`: A boolean indicating whether to enable ES6 syntax in the generated JavaScript code (default is `True`).
-* `enable_stage3`: A boolean indicating whether to enable Stage 3 syntax in the generated JavaScript code (default is `True`).
-* `*args` and `**kwargs`: Any arguments and keyword-arguments supported by `dash.callback` are also supported by `better-dash-callback.callback`
+* `disable_es6`: A boolean indicating whether to disable ES6 syntax in the generated JavaScript code and revert back to ES5 support (default is `False`).
+* `enable_stage3`: A boolean indicating whether to enable Stage 3 syntax in the generated JavaScript code (default is `False`).
+* Any arguments and keyword-arguments supported by `dash.callback` are also supported by `better-dash-callback.callback`
 
 ## Installation
 
