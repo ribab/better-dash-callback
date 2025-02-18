@@ -1,8 +1,11 @@
 from setuptools import setup, find_packages
+from pathlib import Path
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
 
 setup(
     name='better-dash-callback',
-    version='0.1.0',
+    version='0.1.1',
     description='Runs clientside callback functions in Dash applications using Python syntax, eliminating the need for inline JavaScript.',
     author='Richard Barella Jr.',
     author_email='codingwithricky@gmail.com',
@@ -20,4 +23,6 @@ setup(
         'License :: OSI Approved :: MIT License',
     ],
     include_package_data=True,
+    long_description=long_description,
+    long_description_content_type='text/markdown'
 )
