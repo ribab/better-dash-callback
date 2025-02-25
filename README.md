@@ -1,3 +1,5 @@
+**Warning** This will soon be switching to use [pscript](https://github.com/flexxui/pscript) as a dependency instead of [metapensiero.pj](https://github.com/metapensiero/metapensiero.pj) so it can maintain its permissive MIT license.
+
 # better-dash-callback
 
 A library that enables running clientside callback functions in Dash applications using Python syntax, eliminating the need for inline JavaScript.
